@@ -51,3 +51,6 @@ mpuller will then:
 * copy that XML snippet to your clipboard using `xclip -selection clipboard`
 
 mpuller will also create `~/.mpuller/cache/` if needed.
+
+## Credits
+Oskar Schöldström (oxyc) for [bash-boilerplate](https://github.com/oxyc/bash-boilerplate)
