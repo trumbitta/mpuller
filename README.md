@@ -5,7 +5,7 @@ everyday experience with Maven, some of the awesomeness I could find in
 other worlds like Node.js with `npm`, Python with `pip`, common web
 development with `bower` or `yeoman`, and so on.
 
-### A gentle warning and a plea
+## A gentle warning and a plea
 mpuller is still young and thus a mess.  
 It works, but it's ugly and incomplete.
 
@@ -62,7 +62,7 @@ mpuller will also create `~/.mpuller/cache/` if needed.
 ## Credits
 Oskar Schöldström for [oxyc/bash-boilerplate](https://github.com/oxyc/bash-boilerplate)
 
-#Copyright and license
+##Copyright and license
 Copyright 2012 William Ghelfi (trumbitta @ github)
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
