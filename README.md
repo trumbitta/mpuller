@@ -60,7 +60,7 @@ mpuller will then:
 mpuller will also create `~/.mpuller/cache/` if needed.
 
 ## Credits
-Oskar Schöldström (oxyc) for [bash-boilerplate](https://github.com/oxyc/bash-boilerplate)
+Oskar Schöldström for [oxyc/bash-boilerplate](https://github.com/oxyc/bash-boilerplate)
 
 #Copyright and license
 Copyright 2012 William Ghelfi (trumbitta @ github)
