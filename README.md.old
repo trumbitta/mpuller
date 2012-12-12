@@ -1,0 +1,130 @@
+# Venkman
+## A lightweight companion on your Maven journeys
+Venkman is an attempt to (loosely) port to my everyday experience with Maven,
+some of the awesomeness I could find in other worlds like Node.js with `npm`,
+Python with `pip`, common web development with `bower` or `yeoman`, and so on.
+
+## How to search Maven Central
+Venkman searches Maven Central using their REST API.
+
+### venkman search mystring
+`venkman search entando`  
+performs a search like: `http://search.maven.org/solrsearch/select?q=entando&rows=20&wt=json`  
+and shows a result like:
+
+```
+#### Venkman # Search #################################################
+
+Searched for: entando
+ Items found: 33
+
+      groupId: org.entando.entando.plugins
+   artifactId: entando-plugins-parent
+latestVersion: 3.0.0
+    venkmanId: org.entando.entando.plugins:entando-plugins-parent
+
+      groupId: org.entando.entando
+   artifactId: entando-core-webapp
+latestVersion: 3.0.0
+    venkmanId: org.entando.entando:entando-core-webapp
+
+      groupId: org.entando.entando
+   artifactId: entando-archetype-portal-generic
+latestVersion: 3.0.0-02
+    venkmanId: org.entando.entando:entando-archetype-portal-generic
+
+...
+
+Searched for: entando
+ Items found: 33
+
+#### Venkman # Search #################################################
+```
+
+### venkman search mystring --verbose
+Adding a `--verbose` tells Venkman to show more info.
+
+`venkman search entando --verbose`  
+performs a search like: `http://search.maven.org/solrsearch/select?q=entando&rows=20&wt=json`  
+and shows a result like:
+
+```
+#### Venkman # Search #################################################
+
+Searched for: entando
+ Items found: 33
+
+      groupId: org.entando.entando.plugins
+   artifactId: entando-plugins-parent
+latestVersion: 3.0.0
+    venkmanId: org.entando.entando.plugins:entando-plugins-parent
+
+      groupId: org.entando.entando
+   artifactId: entando-core-webapp
+latestVersion: 3.0.0
+    venkmanId: org.entando.entando:entando-core-webapp
+
+      groupId: org.entando.entando
+   artifactId: entando-archetype-portal-generic
+latestVersion: 3.0.0-02
+    venkmanId: org.entando.entando:entando-archetype-portal-generic
+
+...
+
+Searched for: entando
+ Items found: 33
+
+
+#### Venkman # Show ###################################################
+```
+
+Now that we discovered some pesky venkmanIds, let's put one of them to work.
+
+`venkman show org.entando.entando:entando-core-engine`  
+performs a search like: `http://search.maven.org/solrsearch/select?q=g:%22org.entando.entando%22+AND+a:%22entando-core-engine%22&core=gav&rows=20&wt=json`  
+and shows a result like:
+
+
+
+# venkman search entando --verbose
+
+
+
+   Info for: org.entando.entando:entando-core-engine
+Items found: 3
+
+      groupId: org.entando.entando
+   artifactId: entando-core-engine
+      version: 3.0.0
+    venkmanId: org.entando.entando:entando-core-engine
+ available as: -sources.jar
+               -javadoc.jar
+               .jar
+               -tests.jar
+               -misc-test.zip
+               .pom
+
+      groupId: org.entando.entando
+   artifactId: entando-core-engine
+      version: 2.4.0.1
+    venkmanId: org.entando.entando:entando-core-engine
+ available as: -javadoc.jar
+               -sources.jar
+               .jar
+               -tests.jar
+               -misc-test.zip
+               .pom
+
+      groupId: org.entando.entando
+   artifactId: entando-core-engine
+      version: 2.4.0
+    venkmanId: org.entando.entando:entando-core-engine
+ available as: -javadoc.jar
+               -sources.jar
+               .jar
+               -tests.jar
+               -misc-test.zip
+               .pom
+
+   Info for: org.entando.entando:entando-core-engine
+Items found: 3
