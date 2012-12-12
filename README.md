@@ -5,6 +5,13 @@ everyday experience with Maven, some of the awesomeness I could find in
 other worlds like Node.js with `npm`, Python with `pip`, common web
 development with `bower` or `yeoman`, and so on.
 
+### A gentle warning and a plea
+mpuller is still young and thus a mess.  
+It works, but it's ugly and incomplete.
+
+So please be gentle, but also use it and get in touch!  
+Use the issues, fork it and submit pull-requests, blame me.
+
 ## Install mpuller
 To run mpuller, obviously enough you will first need Maven, a JDK, and Bash.
 You will also need:
@@ -36,7 +43,7 @@ GitHub | BitBucket | Gitorious | Whatever?
 
 You could (and **should**) head to http://search.maven.org/ and see if it's
 available on Maven Central.  
-If it's not, you should then read this: `__insert link to sonatype OSS guide here__`
+If it's not, you should then read this: https://docs.sonatype.org/display/Repository/Uploading+3rd-party+Artifacts+to+The+Central+Repository
 
 Then, if all in all you just want to have it installed from sources, 
 **who you gonna call?**
@@ -54,3 +61,12 @@ mpuller will also create `~/.mpuller/cache/` if needed.
 
 ## Credits
 Oskar Schöldström (oxyc) for [bash-boilerplate](https://github.com/oxyc/bash-boilerplate)
+
+#Copyright and license
+Copyright 2012 William Ghelfi (trumbitta @ github)
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.

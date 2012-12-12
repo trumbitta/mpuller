@@ -1,4 +1,11 @@
 #!/bin/bash
+#mpuller v0.1
+#
+#Copyright 2012 William Ghelfi (trumbitta @ github)
+#Licensed under the Apache License v2.0
+#http://www.apache.org/licenses/LICENSE-2.0
+#
+
 #
 # A lot of this is based on options.bash by Daniel Mills.
 # @see https://github.com/e36freak/tools/blob/master/options.bash
@@ -103,6 +110,44 @@ init_cache() {
     fi
 }
 
+maven_read_from_pom() {
+  pom_data=$(mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=$1 | grep -v "\[")
+}
+
+pom_snippet_build() {
+
+  out "Building POM snippet..."
+
+  local pom_data=""
+
+  maven_read_from_pom "project.groupId"
+  POM_SNIPPET_GROUPID=${pom_data}
+
+  maven_read_from_pom "project.artifactId"
+  POM_SNIPPET_ARTIFACTID=${pom_data}
+
+  maven_read_from_pom "project.version"
+  POM_SNIPPET_VERSION=${pom_data}
+
+  success "... done."
+}
+
+pom_snippet_print() {
+  cat <<EOM
+<dependency>
+    <groupId>${POM_SNIPPET_GROUPID}</groupId>
+    <artifactId>${POM_SNIPPET_ARTIFACTID}</artifactId>
+    <version>${POM_SNIPPET_VERSION}</version>
+</dependency>
+EOM
+}
+
+pom_snippet_copy_to_clipboard() {
+  out "Copying POM snippet to clipboard..."
+  pom_snippet_print | xclip -selection clipboard
+  success "... done."
+}
+
 # Actions
 do_install() {
     init_cache
@@ -113,7 +158,7 @@ do_install() {
     if [[ -d ${repo_name} ]]; then
         success "${repo_name} already exists, updating..."
         cd ${repo_name}
-        git pull origin $BRANCH_TO_USE && \
+        git pull && \
         success "... done."
     else
         err "${repo_name} not yet cached, cloning..."
@@ -122,16 +167,22 @@ do_install() {
         cd ${repo_name}
     fi
 
+    git checkout $BRANCH_TO_USE
+
     out "Installing..."
     ${MAVEN_INSTALL} && \
     success "... done."
+
+    pom_snippet_build
+    pom_snippet_print
+    pom_snippet_copy_to_clipboard
 }
 
 # Put your script here
 main() {
 
   case $action in
-    install) out "poba 1?"; do_install "${repo_to_install}" ;;
+    install) do_install "${repo_to_install}" ;;
     *) err "invalid action: $action" ;;
   esac
 
@@ -251,12 +302,13 @@ while [[ $1 = -?* ]]; do
   case $1 in
     -h|--help) usage >&2; safe_exit ;;
     -V|--version) out "$version"; safe_exit ;;
-    -u|--username) shift; username=$1 ;;
-    -p|--password) shift; password=$1 ;;
+    -b|--branch) shift; BRANCH_TO_USE=$1 ;;
+#    -u|--username) shift; username=$1 ;;
+#    -p|--password) shift; password=$1 ;;
     -v|--verbose) verbose=1 ;;
-    -q|--quiet) quiet=1 ;;
-    -i|--interactive) interactive=1 ;;
-    -f|--force) force=1 ;;
+#    -q|--quiet) quiet=1 ;;
+#    -i|--interactive) interactive=1 ;;
+#    -f|--force) force=1 ;;
     --endopts) shift; break ;;
     *) die "invalid option: $1" ;;
   esac
