@@ -36,7 +36,7 @@ GitHub | BitBucket | Gitorious | Whatever?
 
 You could (and **should**) head to http://search.maven.org/ and see if it's
 available on Maven Central.  
-If it's not, you should then read this: <insert link to sonatype OSS guide here>
+If it's not, you should then read this: `__insert link to sonatype OSS guide here__`
 
 Then, if all in all you just want to have it installed from sources, 
 **who you gonna call?**
