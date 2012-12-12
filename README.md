@@ -48,16 +48,22 @@ If it's not, you should then read *[Uploading 3rd-party Artifacts to The Central
 Then, if all in all what you really want is just to have it installed from sources, 
 **who you gonna call?**
 
-`mpuller install git://github.com/entando/entando-core-engine.git --verbose`
+`mpuller install git://github.com/entando/entando-core-engine.git`
 
 mpuller will then:
 
 * clone a local copy of the git repository in `~/.mpuller/cache/`
+* checkout master
 * run `mvn clean install -DskipTests`
 * print out a basic XML snippet for the `pom.xml`
 * copy that XML snippet to your clipboard using `xclip -selection clipboard`
 
 mpuller will also create `~/.mpuller/cache/` if needed.
+
+### Other examples
+
+`mpuller install git://github.com/entando/entando-core-engine.git -b develop`  
+install the `develop` branch instead of `master`
 
 ## Credits
 Oskar Schöldström for [oxyc/bash-boilerplate](https://github.com/oxyc/bash-boilerplate)

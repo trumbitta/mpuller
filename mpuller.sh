@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #mpuller v0.1
 #
 #Copyright 2012 William Ghelfi (trumbitta @ github)
@@ -17,7 +17,10 @@ ME="mpuller"
 CACHE_DIR="${HOME}/.${ME}/cache"
 LAUNCH_DIR=`pwd`
 BRANCH_TO_USE="master"
-MAVEN_INSTALL="mvn clean install -DskipTests"
+GIT_COMMAND_OPTS="-q"
+MAVEN_COMMAND_OPTS="-q"
+MAVEN_INSTALL="mvn clean install ${MAVEN_COMMAND_OPTS} -DskipTests"
+#MAVEN_INSTALL="mvn --version"
 
 # Exit immediately on error
 set -e
@@ -158,16 +161,17 @@ do_install() {
     if [[ -d ${repo_name} ]]; then
         success "${repo_name} already exists, updating..."
         cd ${repo_name}
-        git pull && \
+        git checkout ${GIT_COMMAND_OPTS} master
+        git pull ${GIT_COMMAND_OPTS} && \
         success "... done."
     else
         err "${repo_name} not yet cached, cloning..."
-        git clone ${repo_to_install} && \
+        git clone ${GIT_COMMAND_OPTS} ${repo_to_install} && \
         success "... done."
         cd ${repo_name}
     fi
 
-    git checkout $BRANCH_TO_USE
+    git checkout ${GIT_COMMAND_OPTS} $BRANCH_TO_USE
 
     out "Installing..."
     ${MAVEN_INSTALL} && \
