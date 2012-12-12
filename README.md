@@ -41,11 +41,11 @@ This is mpuller's specialty.
 Found an interesting Java library, developed and taken care of using Maven, on
 GitHub | BitBucket | Gitorious | Whatever?
 
-You could (and **should**) head to http://search.maven.org/ and see if it's
+You should head to http://search.maven.org/ and see if it's
 available on Maven Central.  
-If it's not, you should then read this: https://docs.sonatype.org/display/Repository/Uploading+3rd-party+Artifacts+to+The+Central+Repository
+If it's not, you should then read *[Uploading 3rd-party Artifacts to The Central Repository](https://docs.sonatype.org/display/Repository/Uploading+3rd-party+Artifacts+to+The+Central+Repository)*.
 
-Then, if all in all you just want to have it installed from sources, 
+Then, if all in all what you really want is just to have it installed from sources, 
 **who you gonna call?**
 
 `mpuller install git://github.com/entando/entando-core-engine.git --verbose`
