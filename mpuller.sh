@@ -67,7 +67,7 @@ confirm() {
   (($force)) && return 1;
 
   read -p "$1 [Y/n] " -n 1;
-  [[ $REPLY =~ ^[Yy]$ ]];
+  [[ ( $REPLY =~ ^[Yy]$ ) || ( $REPLY == "" ) ]];
 }
 
 # }}}
@@ -150,6 +150,18 @@ pom_snippet_copy_to_clipboard() {
 }
 
 # Actions
+
+do_cache-clean() {
+  if ! confirm "BEWARE! I'm going to delete the whole ${CACHE_DIR} !"; then
+      out "\n"
+      err "Deletion aborted. Exiting.\n"
+      return
+  fi
+  out "\nDeleting ${CACHE_DIR}..."
+  rm -rf ${CACHE_DIR}
+  success "... done."
+}
+
 do_install() {
     init_cache
     cd ${CACHE_DIR}
@@ -189,7 +201,10 @@ main() {
   }
 
   case $action in
-    install) do_install "${repo_to_install}" ;;
+    install)
+      do_install "${repo_to_install}" ;;
+    cache-clean)
+      do_cache-clean ;;
     *) err "invalid action: $action" ;;
   esac
 
@@ -242,6 +257,10 @@ prompt_options() {
 # Read the command and set stuff
 while [[ $1 = ?* ]]; do
   case $1 in
+    cache-clean)
+      action=$1
+      shift
+      break ;;
     install)
         action=$1
         shift
