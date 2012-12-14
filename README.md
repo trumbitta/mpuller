@@ -65,6 +65,12 @@ mpuller will also create `~/.mpuller/cache/` if needed.
 `mpuller install git://github.com/entando/entando-core-engine.git -b develop`  
 install the `develop` branch instead of `master`
 
+`mpuller install git://github.com/entando/entando-core-engine.git --verbose`  
+add `--verbose` or `-v` for not running `maven` and `git` in quiet mode
+
+`mpuller cache-clean`  
+delete ~/.mpuller/cache
+
 ## Credits
 Oskar Schöldström for [oxyc/bash-boilerplate](https://github.com/oxyc/bash-boilerplate)
 
