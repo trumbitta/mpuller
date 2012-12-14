@@ -19,8 +19,6 @@ LAUNCH_DIR=`pwd`
 BRANCH_TO_USE="master"
 GIT_COMMAND_OPTS="-q"
 MAVEN_COMMAND_OPTS="-q"
-MAVEN_INSTALL="mvn clean install ${MAVEN_COMMAND_OPTS} -DskipTests"
-#MAVEN_INSTALL="mvn --version"
 
 # Exit immediately on error
 set -e
