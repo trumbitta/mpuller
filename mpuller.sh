@@ -172,7 +172,7 @@ do_install() {
     git checkout ${GIT_COMMAND_OPTS} $BRANCH_TO_USE
 
     out "Installing..."
-    ${MAVEN_INSTALL} && \
+    mvn clean install ${MAVEN_COMMAND_OPTS} -DskipTests && \
     success "... done."
 
     pom_snippet_build
@@ -182,6 +182,11 @@ do_install() {
 
 # Put your script here
 main() {
+
+  ((verbose)) && {
+    MAVEN_COMMAND_OPTS=""
+    GIT_COMMAND_OPTS=""
+  }
 
   case $action in
     install) do_install "${repo_to_install}" ;;
